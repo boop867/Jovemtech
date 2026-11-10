@@ -1,77 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funções básicas</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 24px;
-            font-family: Arial, sans-serif;
-            background-color: #f0f4f8;
-            color: #243447;
-        }
-
-        main {
-            max-width: 520px;
-            margin: 40px auto;
-            padding: 24px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 14px #00000018;
-        }
-
-        h1 { color: #1769aa; }
-
-        input, button {
-            box-sizing: border-box;
-            margin: 8px 0;
-            padding: 10px 12px;
-            font: inherit;
-        }
-
-        input { width: 100%; }
-
-        button {
-            border: 0;
-            border-radius: 6px;
-            background-color: #1769aa;
-            color: white;
-            cursor: pointer;
-        }
-
-        button:hover { background-color: #10558b; }
-
-        [aria-live] { min-height: 1.5em; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funções básicas</title>
+  <style>
+    body { margin: 0; padding: 24px; font-family: Arial, sans-serif; background: #f0f4f8; color: #243447; }
+    main { max-width: 520px; margin: 40px auto; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 4px 14px #00000018; }
+    h1 { color: #1769aa; }
+    input, button { box-sizing: border-box; margin: 8px 0; padding: 10px 12px; font: inherit; }
+    input { width: 100%; }
+    button { border: 0; border-radius: 6px; background: #1769aa; color: white; cursor: pointer; }
+    button:hover { background: #10558b; }
+    [aria-live] { min-height: 1.5em; }
+  </style>
 </head>
 <body>
-    <main>
-        <h1>Olá!</h1>
-        <p>Experimente algumas funções básicas de JavaScript.</p>
+  <main>
+    <h1>Olá!</h1>
+    <p>Experimente algumas funções básicas de JavaScript.</p>
+    <label for="nome">Seu nome:</label>
+    <input id="nome" type="text" placeholder="Digite seu nome" autocomplete="name">
+    <button id="cumprimentar" type="button">Cumprimentar</button>
+    <p id="mensagem" aria-live="polite"></p>
+    <button id="mostrar-data" type="button">Mostrar data e hora</button>
+    <p id="data-hora" aria-live="polite"></p>
+  </main>
+  <script>
+    const campoNome = document.getElementById('nome');
+    const mensagem = document.getElementById('mensagem');
+    const dataHora = document.getElementById('data-hora');
 
-        <label for="nome">Seu nome:</label>
-        <input id="nome" type="text" placeholder="Digite seu nome">
-        <button type="button" onclick="cumprimentar()">Cumprimentar</button>
-        <p id="mensagem" aria-live="polite"></p>
+    document.getElementById('cumprimentar').addEventListener('click', () => {
+      const nome = campoNome.value.trim();
+      mensagem.textContent = nome ? `Olá, ${nome}!` : 'Olá! Digite seu nome primeiro.';
+    });
 
-        <button type="button" onclick="mostrarData()">Mostrar data e hora</button>
-        <p id="data-hora" aria-live="polite"></p>
-    </main>
-
-    <script>
-        function cumprimentar() {
-            const nome = document.getElementById('nome').value.trim();
-            document.getElementById('mensagem').textContent = nome
-                ? `Olá, ${nome}!`
-                : 'Olá! Digite seu nome primeiro.';
-        }
-
-        function mostrarData() {
-            document.getElementById('data-hora').textContent =
-                new Date().toLocaleString('pt-BR');
-        }
-    </script>
+    document.getElementById('mostrar-data').addEventListener('click', () => {
+      dataHora.textContent = new Date().toLocaleString('pt-BR');
+    });
+  </script>
 </body>
 </html>

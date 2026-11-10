@@ -1,132 +1,107 @@
 const readline = require('readline/promises');
+const { stdin, stdout } = require('process');
 
-/*
-    JovemTech - Lógica de Programação
-    LISTA DE ATIVIDADES 1: Exercícios Práticos
-*/
+// Lê números com validação para evitar resultados inesperados com entradas inválidas.
+async function perguntarNumero(rl, mensagem, { inteiro = false } = {}) {
+  while (true) {
+    const resposta = (await rl.question(mensagem)).trim().replace(',', '.');
+    const numero = inteiro ? Number(resposta) : Number(resposta);
 
-const { stdin: input, stdout: output } = require('process');
+    if (resposta !== '' && Number.isFinite(numero) && (!inteiro || Number.isInteger(numero))) {
+      return numero;
+    }
+
+    console.log(`Digite um número ${inteiro ? 'inteiro' : 'válido'}.`);
+  }
+}
 
 async function exercicio1(rl) {
-    console.log("\n--- Exercício 1: Cálculo de Idade ---");
-    const anoNascimento = parseInt(await rl.question("Informe o ano de nascimento: "));
-    const anoAtual = new Date().getFullYear();
-    const idade = anoAtual - anoNascimento;
-    console.log(`-> Sua idade é: ${idade} anos.`);
+  console.log('\n--- Exercício 1: Cálculo de idade ---');
+  const ano = await perguntarNumero(rl, 'Informe o ano de nascimento: ', { inteiro: true });
+  const anoAtual = new Date().getFullYear();
+  console.log(`Idade aproximada: ${anoAtual - ano} anos.`);
 }
 
 async function exercicio2(rl) {
-    console.log("\n--- Exercício 2: Antecessor e Sucessor ---");
-    const numero = parseInt(await rl.question("Informe um número inteiro: "));
-    console.log(`-> Número: ${numero} | Antecessor: ${numero - 1} | Sucessor: ${numero + 1}`);
+  console.log('\n--- Exercício 2: Antecessor e sucessor ---');
+  const numero = await perguntarNumero(rl, 'Informe um número inteiro: ', { inteiro: true });
+  console.log(`Número: ${numero} | Antecessor: ${numero - 1} | Sucessor: ${numero + 1}`);
 }
 
 async function exercicio3(rl) {
-    console.log("\n--- Exercício 3: Cálculo Salarial ---");
-    const horasTrabalhadas = parseFloat(await rl.question("Informe o número de horas trabalhadas: "));
-    const valorHora = 51.90;
-    const salario = horasTrabalhadas * valorHora;
-    console.log(`-> O salário total é: R$ ${salario.toFixed(2)}`);
+  console.log('\n--- Exercício 3: Cálculo salarial ---');
+  const horas = await perguntarNumero(rl, 'Informe as horas trabalhadas: ');
+  const valorHora = 51.90;
+  console.log(`Salário total: R$ ${(horas * valorHora).toFixed(2)}`);
 }
 
 async function exercicio4(rl) {
-    console.log("\n--- Exercício 4: Desconto de 15% ---");
-    const nomeCliente = await rl.question("Informe o nome do cliente: ");
-    const valorCompra = parseFloat(await rl.question("Informe o valor total da compra (R$): "));
-    const valorComDesconto = valorCompra * 0.85;
-    console.log(`-> Cliente: ${nomeCliente}`);
-    console.log(`-> Valor total com 15% de desconto: R$ ${valorComDesconto.toFixed(2)}`);
+  console.log('\n--- Exercício 4: Desconto de 15% ---');
+  const nome = (await rl.question('Informe o nome do cliente: ')).trim();
+  const compra = await perguntarNumero(rl, 'Informe o valor da compra (R$): ');
+  console.log(`Cliente: ${nome || '(não informado)'}`);
+  console.log(`Total com desconto: R$ ${(compra * 0.85).toFixed(2)}`);
 }
 
 async function exercicio5(rl) {
-    console.log("\n=== Exercício 5: Média Escolar ===");
-    const nota1 = parseFloat(await rl.question("Informe a primeira nota: "));
-    const nota2 = parseFloat(await rl.question("Informe a segunda nota: "));
-    const nota3 = parseFloat(await rl.question("Informe a terceira nota: "));
-    const media = (nota1 + nota2 + nota3) / 3;
-
-    if (media >= 7) {
-        console.log(`-> Média: ${media.toFixed(2)} - Aprovado!`);
-    } else {
-        console.log(`-> Média: ${media.toFixed(2)} - Não aprovado.`);
-    }
+  console.log('\n--- Exercício 5: Média escolar ---');
+  const notas = [];
+  for (let i = 1; i <= 3; i++) {
+    notas.push(await perguntarNumero(rl, `Informe a nota ${i}: `));
+  }
+  const media = notas.reduce((soma, nota) => soma + nota, 0) / notas.length;
+  console.log(`Média: ${media.toFixed(2)} — ${media >= 7 ? 'Aprovado!' : 'Não aprovado.'}`);
 }
 
 async function exercicio6(rl) {
-    console.log("\n--- Exercício 6: Situação por Idade ---");
-    const idadePessoa = parseInt(await rl.question("Informe a idade: "));
-
-    if (idadePessoa >= 60) {
-        console.log("-> Situação: Aposentado");
-    } else {
-        console.log("-> Situação: Trabalho Formal");
-    }
+  console.log('\n--- Exercício 6: Situação por idade ---');
+  const idade = await perguntarNumero(rl, 'Informe a idade: ', { inteiro: true });
+  console.log(idade >= 60 ? 'Situação: Aposentado' : 'Situação: Trabalho formal');
 }
 
 async function exercicio7(rl) {
-    console.log("\n--- Exercício 7: Desconto Condicional ---");
-    const valorTotal = parseFloat(await rl.question("Informe o valor total da compra (R$): "));
-    const cartaoFidelidade = (await rl.question("Possui cartão fidelidade? (SIM/NAO): ")).trim().toUpperCase();
-
-    if (cartaoFidelidade === "SIM" || valorTotal > 500.00) {
-        const valorComDesconto = valorTotal * 0.80;
-        console.log(`-> Desconto aplicado! Valor final: R$ ${valorComDesconto.toFixed(2)}`);
-    } else {
-        console.log(`-> Nenhum desconto. Valor final: R$ ${valorTotal.toFixed(2)}`);
-    }
+  console.log('\n--- Exercício 7: Desconto condicional ---');
+  const total = await perguntarNumero(rl, 'Informe o valor da compra (R$): ');
+  const temCartao = (await rl.question('Possui cartão fidelidade? (SIM/NAO): ')).trim().toUpperCase();
+  const desconto = temCartao === 'SIM' || total > 500;
+  console.log(desconto
+    ? `Desconto aplicado. Valor final: R$ ${(total * 0.8).toFixed(2)}`
+    : `Sem desconto. Valor final: R$ ${total.toFixed(2)}`);
 }
 
 async function exercicio8(rl) {
-    console.log("\n--- Exercício 8: Seleção de Estagiários ---");
-    const cursandoEnsinoMedio = (await rl.question("Está cursando o ensino médio? (SIM/NAO): ")).trim().toUpperCase();
-    const idadeCandidato = parseInt(await rl.question("Informe a idade do candidato: "));
-
-    if (cursandoEnsinoMedio === "SIM" && idadeCandidato < 18) {
-        console.log("-> Status: Aprovado para próxima fase");
-    } else {
-        console.log("-> Status: Não atende aos critérios");
-    }
+  console.log('\n--- Exercício 8: Seleção de estagiários ---');
+  const cursando = (await rl.question('Está cursando o ensino médio? (SIM/NAO): ')).trim().toUpperCase();
+  const idade = await perguntarNumero(rl, 'Informe a idade do candidato: ', { inteiro: true });
+  console.log(cursando === 'SIM' && idade < 18
+    ? 'Aprovado para a próxima fase.'
+    : 'Não atende aos critérios.');
 }
+
+const exercicios = {
+  '1': exercicio1, '2': exercicio2, '3': exercicio3, '4': exercicio4,
+  '5': exercicio5, '6': exercicio6, '7': exercicio7, '8': exercicio8
+};
 
 async function main() {
-    const rl = require('readline/promises').createInterface({ input, output });
-    let rodando = true;
-
-    while (rodando) {
-        console.log("\n==================================");
-        console.log("        MENU DE EXERCÍCIOS        ");
-        console.log("==================================");
-        console.log("1. Calcular Idade");
-        console.log("2. Antecessor e Sucessor");
-        console.log("3. Cálculo Salarial");
-        console.log("4. Desconto de 15%");
-        console.log("5. Média Escolar");
-        console.log("6. Situação por Idade");
-        console.log("7. Desconto Promocional");
-        console.log("8. Seleção de Estagiários");
-        console.log("0. Sair");
-
-        const opcao = await rl.question("\nEscolha uma opção (0-8): ");
-
-        switch (opcao.trim()) {
-            case '1': await exercicio1(rl); break;
-            case '2': await exercicio2(rl); break;
-            case '3': await exercicio3(rl); break;
-            case '4': await exercicio4(rl); break;
-            case '5': await exercicio5(rl); break;
-            case '6': await exercicio6(rl); break;
-            case '7': await exercicio7(rl); break;
-            case '8': await exercicio8(rl); break;
-            case '0':
-                console.log("Encerrando o programa. Até logo!");
-                rodando = false;
-                break;
-            default:
-                console.log("Opção inválida! Escolha um número entre 0 e 8.");
-        }
+  const rl = readline.createInterface({ input: stdin, output: stdout });
+  try {
+    while (true) {
+      console.log('\n=== MENU DE EXERCÍCIOS ===');
+      console.log('1. Calcular idade\n2. Antecessor e sucessor\n3. Cálculo salarial\n4. Desconto de 15%');
+      console.log('5. Média escolar\n6. Situação por idade\n7. Desconto promocional\n8. Seleção de estagiários\n0. Sair');
+      const opcao = (await rl.question('Escolha uma opção (0-8): ')).trim();
+      if (opcao === '0') break;
+      if (exercicios[opcao]) await exercicios[opcao](rl);
+      else console.log('Opção inválida. Escolha um número de 0 a 8.');
     }
-
+    console.log('Programa encerrado. Até logo!');
+  } finally {
     rl.close();
+  }
 }
 
-main();
+main().catch((erro) => {
+  console.error('Não foi possível executar a lista:', erro);
+  process.exitCode = 1;
+});

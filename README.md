@@ -1,33 +1,18 @@
-# JovemTech - Lógica de Programação
+# JovemTech — Lógica de Programação
 
-Este repositório reúne exercícios práticos de lógica de programação em JavaScript e TypeScript, além de pequenos projetos e jogos no terminal.
+Repositório de exercícios para praticar lógica, JavaScript, TypeScript e programação orientada a objetos.
 
-## Estrutura do projeto
+## Estrutura
 
-- `javascript/` — exercícios e projetos em JavaScript
-- `typescript/` — exemplos em TypeScript e projetos orientados a objetos
-- `dist/` — arquivos compilados pelo TypeScript
+- `javascript/` — exemplos de JavaScript, exercícios de terminal e página HTML.
+- `typescript/` — exemplos TypeScript e jogos de terminal.
+- `dist/typescript/` — saída gerada pelo compilador; não edite manualmente.
 
-## Conteúdo
+Os arquivos correspondentes que ainda aparecem na raiz são versões antigas. Use os diretórios acima como fonte principal.
 
-### JavaScript
-- `javascript/atividade.html` — página HTML com funções básicas em JavaScript
-- `javascript/atividade_1.js` — exercícios com condicionais
-- `javascript/atividade_2.js` — laços de repetição (`for`, `while`, `do...while`)
-- `javascript/atividade_3.js` — vetores e manipulação de dados
-- `javascript/jogo.js` — jogo da memória das cores
-- `javascript/maior_idade.js` — exemplo de notas, médias e condicionais
+## JavaScript
 
-### TypeScript
-- `typescript/calculo.ts` — introdução a tipos e funções
-- `typescript/flappy.ts` — jogo estilo Flappy Bird no terminal
-- `typescript/mario.ts` — exemplo de OO com encapsulamento e polimorfismo
-- `typescript/tsconfig.json` — configuração do TypeScript
-
-## Como executar
-
-### JavaScript
-No terminal, execute os arquivos da pasta `javascript/`:
+Execute a partir da raiz do repositório:
 
 ```bash
 node javascript/atividade_1.js
@@ -37,31 +22,36 @@ node javascript/jogo.js
 node javascript/maior_idade.js
 ```
 
-### TypeScript
-Compile e rode os projetos em `typescript/`:
+Abra `javascript/atividade.html` no navegador para testar a página interativa.
+
+## TypeScript
+
+Requer Node.js e npm. Instale as dependências e compile:
 
 ```bash
 npm install
 npm run build
-node dist/calculo.js
-node dist/mario.js
-node dist/flappy.js
 ```
 
-Também estão disponíveis atalhos:
+Para executar os exemplos compilados:
 
 ```bash
-npm start
-npm run flappy
+npm run calculo
+npm start       # demonstração de orientação a objetos (Mario)
+npm run flappy  # jogo de terminal; use um terminal interativo
 ```
 
-## Observações da revisão
+Os comandos TypeScript compilam os arquivos e geram JavaScript em `dist/typescript/`.
 
-- Corrigi pequenos problemas de organização e estrutura do projeto
-- Removi uma atribuição redundante no jogo da memória
-- Ajustei a entrada do teclado para evitar erros de tipo no projeto TypeScript
-- Mantive os exercícios para que fiquem claros e fáceis de aprender
+## O que os exercícios praticam
 
-## Objetivo
+- entrada e validação de dados
+- variáveis, operações e condicionais
+- laços `for`, `while` e `do...while`
+- arrays, busca e análise de dados
+- funções e tipagem estática
+- classes, interfaces, herança e polimorfismo
 
-Praticar lógica de programação, algoritmos básicos, estruturas de controle, arrays, orientação a objetos e desenvolvimento de jogos em terminal.
+## Observação
+
+Os valores e regras são exemplos didáticos. Por exemplo, o cálculo da idade considera apenas o ano de nascimento.

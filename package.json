@@ -1,25 +1,19 @@
 {
   "name": "jovemtech-logica-programacao",
   "version": "1.0.0",
-  "description": "Projetos e exercícios de lógica de programação em JavaScript e TypeScript",
-  "main": "index.js",
+  "description": "Exercícios e projetos introdutórios de lógica de programação em JavaScript e TypeScript",
   "scripts": {
-    "build": "tsc -p ./typescript/tsconfig.json",
-    "start": "npm run build && node dist/mario.js",
-    "flappy": "npm run build && node dist/flappy.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p typescript/tsconfig.json",
+    "start": "npm run build && node dist/typescript/mario.js",
+    "flappy": "npm run build && node dist/typescript/flappy.js",
+    "calculo": "npm run build && node dist/typescript/calculo.js",
+    "test": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/boop867/jovemtech-logica-programacao.git"
   },
-  "keywords": [
-    "javascript",
-    "typescript",
-    "logica",
-    "programacao",
-    "nodejs"
-  ],
+  "keywords": ["javascript", "typescript", "logica", "programacao", "nodejs"],
   "author": "boop867",
   "license": "ISC",
   "type": "commonjs",
