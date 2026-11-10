@@ -1,9 +1,12 @@
 {
   "name": "jovemtech-logica-programacao",
   "version": "1.0.0",
-  "description": "Projetos e exercícios de lógica de programação em JavaScript",
+  "description": "Projetos e exercícios de lógica de programação em JavaScript e TypeScript",
   "main": "index.js",
   "scripts": {
+    "build": "tsc -p .",
+    "start": "npm run build && node dist/mario.js",
+    "flappy": "npm run build && node dist/flappy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,6 +15,7 @@
   },
   "keywords": [
     "javascript",
+    "typescript",
     "logica",
     "programacao",
     "nodejs"
@@ -21,5 +25,9 @@
   "type": "commonjs",
   "dependencies": {
     "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
   }
 }
