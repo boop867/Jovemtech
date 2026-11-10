@@ -4,7 +4,7 @@
   "description": "Projetos e exercícios de lógica de programação em JavaScript e TypeScript",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p .",
+    "build": "tsc -p ./typescript/tsconfig.json",
     "start": "npm run build && node dist/mario.js",
     "flappy": "npm run build && node dist/flappy.js",
     "test": "echo \"Error: no test specified\" && exit 1"

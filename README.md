@@ -1,67 +1,67 @@
 # JovemTech - Lógica de Programação
 
-Repositório com exercícios práticos de lógica de programação em JavaScript e TypeScript, além de pequenos jogos para navegador e terminal.
+Este repositório reúne exercícios práticos de lógica de programação em JavaScript e TypeScript, além de pequenos projetos e jogos no terminal.
+
+## Estrutura do projeto
+
+- `javascript/` — exercícios e projetos em JavaScript
+- `typescript/` — exemplos em TypeScript e projetos orientados a objetos
+- `dist/` — arquivos compilados pelo TypeScript
 
 ## Conteúdo
 
 ### JavaScript
-- `atividade.html` — página com funções básicas de JavaScript
-- `atividade_1.js` — exercícios de lógica e estruturas condicionais
-- `atividade_2.js` — exemplos de laços `for`, `while` e `do...while`
-- `atividade_3.js` — exercícios com vetores e manipulação de dados
-- `jogo.js` — jogo da memória das cores no terminal
-- `maior_idade.js` — exemplo de média escolar, arrays e condicionais
+- `javascript/atividade.html` — página HTML com funções básicas em JavaScript
+- `javascript/atividade_1.js` — exercícios com condicionais
+- `javascript/atividade_2.js` — laços de repetição (`for`, `while`, `do...while`)
+- `javascript/atividade_3.js` — vetores e manipulação de dados
+- `javascript/jogo.js` — jogo da memória das cores
+- `javascript/maior_idade.js` — exemplo de notas, médias e condicionais
 
 ### TypeScript
-- `calculo.ts` — tipos, função de soma e saída no console
-- `flappy.ts` — jogo inspirado em Flappy Bird para terminal, com entrada pelo teclado
-- `mario.ts` — exemplo de orientação a objetos com interfaces, classes abstratas, herança, encapsulamento e polimorfismo
-- `tsconfig.json` — configuração de compilação do TypeScript
-
-## Requisitos
-
-- Node.js e npm instalados
-- Para jogar `flappy.ts`, use um terminal interativo que suporte entrada pelo teclado
+- `typescript/calculo.ts` — introdução a tipos e funções
+- `typescript/flappy.ts` — jogo estilo Flappy Bird no terminal
+- `typescript/mario.ts` — exemplo de OO com encapsulamento e polimorfismo
+- `typescript/tsconfig.json` — configuração do TypeScript
 
 ## Como executar
 
-### Página HTML
-Abra `atividade.html` em um navegador.
-
-### Exercícios JavaScript
-Execute na raiz do projeto:
+### JavaScript
+No terminal, execute os arquivos da pasta `javascript/`:
 
 ```bash
-node atividade_1.js
-node atividade_2.js
-node atividade_3.js
-node jogo.js
-node maior_idade.js
+node javascript/atividade_1.js
+node javascript/atividade_2.js
+node javascript/atividade_3.js
+node javascript/jogo.js
+node javascript/maior_idade.js
 ```
 
-### Arquivos TypeScript
-Instale as dependências e compile os arquivos:
+### TypeScript
+Compile e rode os projetos em `typescript/`:
 
 ```bash
 npm install
 npm run build
-```
-
-Os arquivos compilados serão gerados na pasta `dist/`. Depois, execute-os com:
-
-```bash
 node dist/calculo.js
 node dist/mario.js
 node dist/flappy.js
 ```
 
-Atalhos para iniciar os jogos (compilam antes de executar):
+Também estão disponíveis atalhos:
 
 ```bash
-npm start       # Mario
-npm run flappy  # Flappy Bird
+npm start
+npm run flappy
 ```
+
+## Observações da revisão
+
+- Corrigi pequenos problemas de organização e estrutura do projeto
+- Removi uma atribuição redundante no jogo da memória
+- Ajustei a entrada do teclado para evitar erros de tipo no projeto TypeScript
+- Mantive os exercícios para que fiquem claros e fáceis de aprender
 
 ## Objetivo
 
-Praticar conceitos iniciais de programação, incluindo variáveis, operadores, condicionais, laços de repetição, arrays, funções, tipagem e programação orientada a objetos.
+Praticar lógica de programação, algoritmos básicos, estruturas de controle, arrays, orientação a objetos e desenvolvimento de jogos em terminal.
