@@ -1,0 +1,25 @@
+{
+  "name": "jovemtech-logica-programacao",
+  "version": "1.0.0",
+  "description": "Projetos e exercícios de lógica de programação em JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boop867/jovemtech-logica-programacao.git"
+  },
+  "keywords": [
+    "javascript",
+    "logica",
+    "programacao",
+    "nodejs"
+  ],
+  "author": "boop867",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
