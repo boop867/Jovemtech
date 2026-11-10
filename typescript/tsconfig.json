@@ -7,7 +7,7 @@
     "types": ["node"],
     "sourceMap": true,
     "strict": true,
-    "noUncheckedIndexedAccess": false,
+    "noUncheckedIndexedAccess": true,
     "skipLibCheck": true
   },
   "include": ["*.ts"],

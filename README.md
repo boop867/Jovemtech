@@ -1,18 +1,40 @@
 # JovemTech — Lógica de Programação
 
-Repositório de exercícios para praticar lógica, JavaScript, TypeScript e programação orientada a objetos.
+Exercícios e pequenos projetos didáticos em JavaScript e TypeScript.
 
-## Estrutura
+## Requisitos
 
-- `javascript/` — exemplos de JavaScript, exercícios de terminal e página HTML.
-- `typescript/` — exemplos TypeScript e jogos de terminal.
-- `dist/typescript/` — saída gerada pelo compilador; não edite manualmente.
+- Node.js instalado
+- npm (incluído com Node.js)
+- Um terminal interativo para jogar Flappy Bird
 
-Os arquivos correspondentes que ainda aparecem na raiz são versões antigas. Use os diretórios acima como fonte principal.
+## TypeScript: instalar, compilar e executar
+
+Na raiz do repositório, instale as dependências:
+
+```bash
+npm install
+```
+
+Compile todos os exemplos TypeScript:
+
+```bash
+npm run build
+```
+
+Os arquivos JavaScript compilados são gerados em `dist/typescript/`. Para rodar cada exemplo:
+
+```bash
+npm run calculo
+npm start       # demonstração de orientação a objetos (Mario)
+npm run flappy  # jogo de terminal (Espaço pula; R reinicia; Ctrl+C sai)
+```
+
+`npm test` executa a compilação TypeScript como verificação básica.
 
 ## JavaScript
 
-Execute a partir da raiz do repositório:
+Execute os exercícios a partir da raiz:
 
 ```bash
 node javascript/atividade_1.js
@@ -24,34 +46,10 @@ node javascript/maior_idade.js
 
 Abra `javascript/atividade.html` no navegador para testar a página interativa.
 
-## TypeScript
+## Estrutura principal
 
-Requer Node.js e npm. Instale as dependências e compile:
+- `javascript/` — exemplos e exercícios JavaScript
+- `typescript/` — fontes TypeScript e configuração do compilador
+- `dist/typescript/` — arquivos gerados durante a compilação; não edite manualmente
 
-```bash
-npm install
-npm run build
-```
-
-Para executar os exemplos compilados:
-
-```bash
-npm run calculo
-npm start       # demonstração de orientação a objetos (Mario)
-npm run flappy  # jogo de terminal; use um terminal interativo
-```
-
-Os comandos TypeScript compilam os arquivos e geram JavaScript em `dist/typescript/`.
-
-## O que os exercícios praticam
-
-- entrada e validação de dados
-- variáveis, operações e condicionais
-- laços `for`, `while` e `do...while`
-- arrays, busca e análise de dados
-- funções e tipagem estática
-- classes, interfaces, herança e polimorfismo
-
-## Observação
-
-Os valores e regras são exemplos didáticos. Por exemplo, o cálculo da idade considera apenas o ano de nascimento.
+Há alguns arquivos TypeScript antigos na raiz mantidos por compatibilidade. A compilação usa como fonte oficial os arquivos em `typescript/`.
