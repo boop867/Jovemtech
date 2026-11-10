@@ -14,7 +14,7 @@ interface PowerUp {
 // ==========================================
 abstract class Personagem {
     nome: string;
-    protected vidas: number;
+    protected vidas: number; // Encapsulamento protegido
     pontos: number;
 
     constructor(nome: string, vidas: number = 3) {
@@ -23,6 +23,7 @@ abstract class Personagem {
         this.pontos = 0;
     }
 
+    // Método comum herdado por todos
     mover(): void {
         console.log(`${this.nome} está se movendo pelo cenário...`);
     }
@@ -31,10 +32,12 @@ abstract class Personagem {
         console.log(`${this.nome} pulou! 🍄 Woo-hoo!`);
     }
 
+    // Getter para leitura segura da vida (Encapsulamento)
     getVida(): number {
         return this.vidas;
     }
 
+    // Método com validação (Encapsulamento)
     tomarDano(): void {
         if (this.vidas > 0) {
             this.vidas--;
@@ -42,6 +45,7 @@ abstract class Personagem {
         }
     }
 
+    // Método abstrato que força as classes filhas a implementarem (Polimorfismo)
     abstract atacar(): void;
 }
 
@@ -57,6 +61,7 @@ class Mario extends Personagem {
         console.log(`${this.nome} está invencível por ${tempo} segundos! ⭐`);
     }
 
+    // Sobrescrita do método atacar (Polimorfismo)
     atacar(): void {
         console.log(`${this.nome} pula sobre os inimigos e derruba blocos!`);
     }
