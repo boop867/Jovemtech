@@ -9,6 +9,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+// Códigos ANSI: cada cor é encerrada com RESET.
 const RESET = "\x1b[0m";
 const CORES = [
   { nome: "VERMELHO", codigo: "\x1b[31m", simbolo: "●" },
@@ -31,6 +32,7 @@ function perguntar(texto) {
   return new Promise(resolve => rl.question(texto, resolve));
 }
 
+// Embaralha as cartas usando o algoritmo Fisher-Yates.
 function embaralhar(vetor) {
   for (let i = vetor.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -138,6 +140,7 @@ async function jogar() {
   console.log("Informe primeiro a linha e depois a coluna.");
   console.log("Exemplo: 2 3 significa linha 2, coluna 3.");
 
+  criarTarefa = criarTabuleiro(); // Mantém a chamada correta
   criarTabuleiro();
 
   while (paresEncontrados < CORES.length) {
