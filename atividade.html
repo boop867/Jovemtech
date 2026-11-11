@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funções básicas</title>
     <style>
+        /* Estilos simples para deixar a página mais organizada. */
         body {
             margin: 0;
             padding: 24px;
@@ -62,6 +63,7 @@
 
     <script>
         function cumprimentar() {
+            // Pega o nome digitado e remove espaços extras.
             const nome = document.getElementById('nome').value.trim();
             document.getElementById('mensagem').textContent = nome
                 ? `Olá, ${nome}!`
@@ -69,6 +71,7 @@
         }
 
         function mostrarData() {
+            // Mostra a data e a hora no formato usado no Brasil.
             document.getElementById('data-hora').textContent =
                 new Date().toLocaleString('pt-BR');
         }
