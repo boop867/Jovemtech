@@ -127,6 +127,7 @@ class Game {
     private inimigo: InimigoCano; // Instância da classe filha de inimigo
     private score: number;
     private gameOver: boolean;
+    private gameOverReason: 'inimigo' | 'obstaculo' | 'limite' | undefined;
     private gameInterval: ReturnType<typeof setInterval> | undefined;
 
     constructor() {
@@ -135,6 +136,7 @@ class Game {
         this.inimigo = new InimigoCano(this.pipe.x);
         this.score = 0;
         this.gameOver = false;
+        this.gameOverReason = undefined;
     }
 
     public start(): void {
@@ -196,6 +198,7 @@ class Game {
         this.inimigo = new InimigoCano(this.pipe.x);
         this.score = 0;
         this.gameOver = false;
+        this.gameOverReason = undefined;
         this.startGameLoop();
     }
 
@@ -215,6 +218,7 @@ class Game {
         // Colisão com teto ou chão
         if (this.bird.y <= 0 || this.bird.y >= HEIGHT - 1) {
             this.gameOver = true;
+            this.gameOverReason = 'limite';
         }
 
         const birdX = Math.floor(WIDTH / 4);
@@ -224,15 +228,17 @@ class Game {
             const birdY = Math.floor(this.bird.y);
             if (birdY < this.pipe.gapTop || birdY >= this.pipe.gapTop + this.pipe.gapSize) {
                 this.gameOver = true;
+                this.gameOverReason = 'obstaculo';
             }
         }
 
-        // Nova colisão: Colisão com o Inimigo (Planta Carnívora)
-        if (Math.floor(this.pipe.x) === birdX) {
+        // O inimigo só aparece e causa colisão depois de cinco pontos.
+        if (this.score >= 5 && Math.floor(this.pipe.x) === birdX) {
             const birdY = Math.floor(this.bird.y);
             const posicaoInimigoY = this.pipe.gapTop + 4 - this.inimigo.offsetInimigoY;
             if (birdY === posicaoInimigoY) {
-                this.gameOver = true; // Bateu no inimigo!
+                this.gameOver = true;
+                this.gameOverReason = 'inimigo';
             }
         }
     }
@@ -252,10 +258,11 @@ class Game {
                     // Desenha o cano usando a classe Pipe
                     let charDesenhado = this.pipe.desenhar(y, x, this.pipe.gapTop, this.pipe.gapSize);
                     
-                    // Desenha o inimigo por cima do cano usando a classe InimigoCano
-                    let charInimigo = this.inimigo.desenhar(y, x, this.pipe.x, this.pipe.gapTop);
-                    if (charInimigo !== ' ') {
-                        charDesenhado = charInimigo;
+                    if (this.score >= 5) {
+                        const charInimigo = this.inimigo.desenhar(y, x, this.pipe.x, this.pipe.gapTop);
+                        if (charInimigo !== ' ') {
+                            charDesenhado = charInimigo;
+                        }
                     }
 
                     screen += charDesenhado;
@@ -270,7 +277,8 @@ class Game {
         if (countdownSeconds > 0) {
             screen += ` O jogo começa em ${countdownSeconds}s...\n`;
         } else {
-            screen += ` Pontuação: ${this.score} | 👾 Inimigo Ativo | Pressione ESPAÇO para pular\n`;
+            const statusInimigo = this.score >= 5 ? '👾 Inimigo ativo' : 'Inimigo após 5 pontos';
+            screen += ` Pontuação: ${this.score} | ${statusInimigo} | Pressione ESPAÇO para pular\n`;
         }
 
         process.stdout.write(screen);
@@ -279,7 +287,7 @@ class Game {
     private renderGameOver(): void {
         console.clear();
         console.log('====================================');
-        console.log('            GAME OVER               ');
+        console.log(this.gameOverReason === 'inimigo' ? '    GAME OVER: bateu no inimigo!    ' : '            GAME OVER               ');
         console.log(`        Pontuação final: ${this.score}       `);
         console.log('      Pressione R para reiniciar    ');
         console.log('====================================\n');
