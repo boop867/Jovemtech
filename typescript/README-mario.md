@@ -1,6 +1,6 @@
 # Demonstração de personagens do Mario em TypeScript
 
-Este programa de terminal demonstra conceitos de programação orientada a objetos usando personagens inspirados no universo Mario. O exemplo inclui classes abstratas, herança, encapsulamento, polimorfismo e interfaces para power-ups.
+Este programa mostra conceitos de programação orientada a objetos com personagens inspirados no universo Mario, incluindo classes abstratas, herança, encapsulamento, polimorfismo e interfaces.
 
 ## Requisitos
 
@@ -8,15 +8,27 @@ Este programa de terminal demonstra conceitos de programação orientada a objet
 
 ## Como executar
 
-Na raiz do repositório, instale as dependências (se ainda não tiver feito isso) e execute:
+Na raiz do repositório:
 
 ```bash
 npm install
-npm start
+npx tsc -p .
+node .\dist\mario.js
 ```
 
-O programa compila o TypeScript e mostra no terminal exemplos de movimentos, dano, ataques de inimigos e ativação de power-ups.
+Também é possível usar:
+
+```bash
+npm run start
+```
+
+## O que o programa mostra
+
+- movimentos dos personagens
+- dano e vida
+- ataques de inimigos
+- uso de power-ups como cogumelo e estrela
 
 ## Arquivo-fonte
 
-[`mario.ts`](../mario.ts)
+[`../mario.ts`](../mario.ts)

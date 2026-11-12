@@ -1,28 +1,34 @@
 # Jogo do Pássaro em TypeScript
 
-Jogo de terminal inspirado em Flappy Bird. Controle o pássaro para passar pelo vão do cano, evite as bordas e, depois de cinco pontos, desvie também do inimigo que aparece no cano.
+Jogo de terminal inspirado em Flappy Bird. O personagem pula automaticamente ao pressionar a tecla de espaço, evita o cano e tenta alcançar a maior pontuação possível.
 
 ## Requisitos
 
 - Node.js e npm instalados
-- Terminal interativo compatível com entrada pelo teclado
+- Terminal interativo para leitura de teclas
 
 ## Como executar
 
-Na raiz do repositório, instale as dependências (se ainda não tiver feito isso), compile o projeto e inicie o jogo:
+Na raiz do repositório:
 
 ```bash
 npm install
-npm run build
-node dist/typescript/passaro.js
+npx tsc -p .
+node .\dist\passaro.js
+```
+
+Também é possível usar:
+
+```bash
+npm run passaro
 ```
 
 ## Controles
 
-- **Espaço**: fazer o pássaro pular
-- **R**: reiniciar após o fim da partida
-- **Ctrl+C**: sair
+- **Espaço**: pular
+- **R**: reiniciar após game over
+- **Ctrl+C**: sair do jogo
 
 ## Arquivo-fonte
 
-[`passaro.ts`](../passaro.ts)
+[`../passaro.ts`](../passaro.ts)

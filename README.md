@@ -6,50 +6,52 @@ Exercícios e pequenos projetos didáticos em JavaScript e TypeScript.
 
 - Node.js instalado
 - npm (incluído com Node.js)
-- Um terminal interativo para jogar Flappy Bird
+- Terminal interativo para executar alguns jogos
 
-## TypeScript: instalar, compilar e executar
+## Instalação
 
-Na raiz do repositório, instale as dependências:
+Na raiz do repositório, execute:
 
 ```bash
 npm install
 ```
 
-Compile todos os exemplos TypeScript:
+## Compilar todos os arquivos TypeScript
 
 ```bash
-npm run build
+npx tsc -p .
 ```
 
-Os arquivos JavaScript compilados são gerados em `dist/typescript/`. Para rodar cada exemplo:
+Os arquivos compilados são gerados na pasta `dist/`.
+
+## Executar os projetos
+
+```bash
+node .\dist\calculo.js
+node .\dist\mario.js
+node .\dist\passaro.js
+```
+
+Também é possível usar os scripts do `package.json`:
 
 ```bash
 npm run calculo
-npm start       # demonstração de orientação a objetos (Mario)
-npm run flappy  # jogo de terminal (Espaço pula; R reinicia; Ctrl+C sai)
+npm run start
+npm run passaro
 ```
 
-`npm test` executa a compilação TypeScript como verificação básica.
+## Jogos e exemplos
 
-## JavaScript
-
-Execute os exercícios a partir da raiz:
-
-```bash
-node javascript/atividade_1.js
-node javascript/atividade_2.js
-node javascript/atividade_3.js
-node javascript/jogo.js
-node javascript/maior_idade.js
-```
-
-Abra `javascript/atividade.html` no navegador para testar a página interativa.
+- `calculo.ts` — exemplo básico de TypeScript com soma e tipos
+- `mario.ts` — demonstração de POO com herança, encapsulamento e power-ups
+- `passaro.ts` — jogo estilo Flappy Bird em terminal
 
 ## Estrutura principal
 
-- `javascript/` — exemplos e exercícios JavaScript
-- `typescript/` — fontes TypeScript e configuração do compilador
-- `dist/typescript/` — arquivos gerados durante a compilação; não edite manualmente
+- `typescript/` — fontes TypeScript
+- `dist/` — arquivos compilados gerados automaticamente
+- `javascript/` — exercícios em JavaScript
 
-Há alguns arquivos TypeScript antigos na raiz mantidos por compatibilidade. A compilação usa como fonte oficial os arquivos em `typescript/`.
+## Observações
+
+A execução do jogo do pássaro precisa de um terminal interativo. Use espaços para pular, `R` para reiniciar e `Ctrl+C` para sair.
