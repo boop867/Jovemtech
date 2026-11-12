@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "Exercícios e projetos introdutórios de lógica de programação em JavaScript e TypeScript",
   "scripts": {
-    "build": "tsc -p typescript/tsconfig.json",
-    "start": "npm run build && node dist/typescript/mario.js",
-    "flappy": "npm run build && node dist/typescript/flappy.js",
-    "calculo": "npm run build && node dist/typescript/calculo.js",
+    "build": "tsc -p .",
+    "start": "npm run build && node dist/mario.js",
+    "flappy": "npm run build && node dist/passaro.js",
+    "passaro": "npm run build && node dist/passaro.js",
+    "calculo": "npm run build && node dist/calculo.js",
     "test": "npm run build"
   },
   "repository": {
